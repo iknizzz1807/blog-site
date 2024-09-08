@@ -1,4 +1,6 @@
 <script lang="ts">
-    import NavBar from "$lib/components/+NavBar.svelte";
 </script>
-<NavBar/>
+
+<div class="container">
+  <h1>Hello world!</h1>
+</div>
