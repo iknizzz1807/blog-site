@@ -1,4 +1,6 @@
 <script>
+  import { onMount } from "svelte";
+
   let siteName = "My Blog";
   let menuItems = [
     { name: "Home", href: "/" },
@@ -6,9 +8,28 @@
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
+
+  let prevScrollPos = 0;
+  let visible = true;
+
+  onMount(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
+
+  function handleScroll() {
+    const currentScrollPos = window.scrollY;
+    visible = prevScrollPos > currentScrollPos || currentScrollPos < 10;
+    prevScrollPos = currentScrollPos;
+  }
 </script>
 
-<nav class="navbar bg-base-100 shadow-lg">
+<nav
+  class="navbar bg-base-100 shadow-lg fixed top-0 left-0 right-0 transition-transform duration-300 z-50"
+  style="transform: translateY({visible ? '0' : '-100%'});"
+>
   <div class="navbar-start">
     <a href="/" class="btn btn-ghost text-xl">{siteName}</a>
   </div>
@@ -43,7 +64,6 @@
         </div>
       </div>
       <ul
-        tabindex="0"
         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
       >
         <li><a href="/profile">Profile</a></li>
@@ -53,3 +73,9 @@
     </div>
   </div>
 </nav>
+
+<style>
+  :global(body) {
+    padding-top: 64px; /* Adjust this value based on your navbar height */
+  }
+</style>
