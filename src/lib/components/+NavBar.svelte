@@ -47,7 +47,7 @@
       <input
         type="text"
         placeholder="Search"
-        class="input input-bordered w-24 md:w-auto"
+        class="input input-bordered w-full min-w-[150px] max-w-xs"
       />
     </div>
     <div class="dropdown dropdown-end">
