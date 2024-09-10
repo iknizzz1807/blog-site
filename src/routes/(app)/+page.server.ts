@@ -1,0 +1,41 @@
+import type { PageServerLoad } from "./$types";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "$lib/firebase";
+import type { DocumentData } from "firebase/firestore";
+
+interface BlogData extends DocumentData {
+  title: string;
+  previewText: string;
+  authorImage: string;
+  thumbnailImage: string;
+  authorName: string;
+  datePublished: string;
+  readTime: string;
+  likeNumber: string;
+  commentNumber: string;
+}
+
+export const load: PageServerLoad = async () => {
+  const blogsCollection = collection(db, "blogs");
+  const blogSnapshot = await getDocs(blogsCollection);
+
+  const blogs = blogSnapshot.docs.map((doc) => {
+    const data = doc.data() as BlogData;
+    return {
+      id: doc.id,
+      title: data.title,
+      previewText: data.previewText,
+      authorImage: data.authorImage,
+      thumbnailImage: data.thumbnailImage,
+      authorName: data.authorName,
+      datePublished: data.datePublished,
+      readTime: data.readTime,
+      likeNumber: data.likeNumber,
+      commentNumber: data.commentNumber,
+    };
+  });
+
+  return {
+    blogs,
+  };
+};

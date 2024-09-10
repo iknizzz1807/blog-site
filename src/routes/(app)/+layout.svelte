@@ -1,11 +1,12 @@
 <script>
-  import "../app.css";
+  import "../../app.css";
   import NavBar from "$lib/components/+NavBar.svelte";
 </script>
 
-<NavBar />
-
-<slot />
+<main>
+  <NavBar />
+  <slot />
+</main>
 
 <style>
   /* Customizing the scrollbar */
