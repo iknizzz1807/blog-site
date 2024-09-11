@@ -46,33 +46,12 @@
     </div>
 
     <div class="navbar-end">
-      <div class="form-control">
+      <div class="form-control mr-4">
         <input
           type="text"
           placeholder="Search"
           class="input input-bordered w-full min-w-[150px] max-w-xs"
         />
-      </div>
-      <div class="dropdown dropdown-end">
-        <div
-          tabindex="0"
-          role="button"
-          class="btn btn-ghost btn-circle avatar ml-2"
-        >
-          <div class="w-10 rounded-full">
-            <img
-              alt="User avatar"
-              src="https://api.dicebear.com/6.x/initials/svg?seed=JD"
-            />
-          </div>
-        </div>
-        <ul
-          class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-        >
-          <li><a href="/profile">Profile</a></li>
-          <li><a href="/settings">Settings</a></li>
-          <li><a href="/logout">Logout</a></li>
-        </ul>
       </div>
     </div>
   </nav>

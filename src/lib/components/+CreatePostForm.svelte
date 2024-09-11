@@ -2,6 +2,7 @@
   import { getFirestore, collection, addDoc } from "firebase/firestore";
   import { app } from "$lib/firebase";
   import { goto } from "$app/navigation";
+  import { error } from "@sveltejs/kit";
 
   const db = getFirestore(app);
 
@@ -31,15 +32,9 @@
       });
       console.log("Document written with ID: ", docRef.id);
       alert("Tạo post thành công");
-      goto("/");
-      // Reset form or navigate to new post
-    } catch (e: unknown) {
+      goto(`/blog/${docRef.id}`);
+    } catch (e) {
       console.error("Error adding document: ", e);
-      if (e instanceof Error) {
-        alert(`Lỗi: ${e.message}`);
-      } else {
-        alert("Đã xảy ra lỗi không xác định");
-      }
     }
   }
 </script>
