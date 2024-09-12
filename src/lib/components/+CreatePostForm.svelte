@@ -1,8 +1,8 @@
 <script lang="ts">
   import { getFirestore, collection, addDoc } from "firebase/firestore";
   import { app } from "$lib/firebase";
+  import { redirect } from "@sveltejs/kit";
   import { goto } from "$app/navigation";
-  import { error } from "@sveltejs/kit";
 
   const db = getFirestore(app);
 
