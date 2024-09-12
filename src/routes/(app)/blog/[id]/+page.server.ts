@@ -1,4 +1,4 @@
-import { error } from "@sveltejs/kit";
+import { error, redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "$lib/firebase";
@@ -35,9 +35,12 @@ export const load: PageServerLoad = async ({ params }) => {
         },
       };
     } else {
-      throw error(404, "Blog post not found");
+      throw redirect(302, "/");
     }
   } catch (e) {
+    if (e && typeof e === "object" && "status" in e && e.status === 302) {
+      throw e; // Re-throw the redirect
+    }
     console.error("Error fetching blog post:", e);
     throw error(500, "Error fetching blog post");
   }

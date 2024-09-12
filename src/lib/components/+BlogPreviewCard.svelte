@@ -12,10 +12,13 @@
 </script>
 
 <main>
-  <div class="article flex justify-between mb-8 pb-5 border-b border-gray-300">
+  <button
+    class="article flex justify-between mb-8 pb-5 border-b border-gray-300 w-full text-left"
+    on:click={() => goto(`/blog/${id}`)}
+  >
     <div class="content flex-1 mr-5">
       <h2 class="text-2xl font-bold text-gray-800 mb-1">
-        <button on:click={() => goto(`/blog/${id}`)}>{title}</button>
+        {title}
       </h2>
       <p class="subtitle text-base text-gray-500 mb-4">{previewText}</p>
       <div class="author flex items-center mb-4">
@@ -37,7 +40,7 @@
       alt="Medium Day"
       class="thumbnail w-36 h-36 object-cover rounded-lg"
     />
-  </div>
+  </button>
 </main>
 
 <style>
