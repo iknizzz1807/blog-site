@@ -7,6 +7,10 @@
   const { blogs } = data;
 </script>
 
+<svelte:head>
+  <title>ikniz Blog</title>
+</svelte:head>
+
 <main>
   <div class="w-4/5 mx-auto my-5">
     {#each blogs as blog (blog.id)}

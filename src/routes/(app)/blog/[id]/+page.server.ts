@@ -9,6 +9,7 @@ interface BlogData extends DocumentData {
   title: string;
   authorImage: string;
   thumbnailImage: string;
+  content: string;
   authorName: string;
   datePublished: string;
   readTime: string;
@@ -27,6 +28,7 @@ export const load: PageServerLoad = async ({ params }) => {
           title: data.title,
           authorImage: data.authorImage,
           thumbnailImage: data.thumbnailImage,
+          content: data.content,
           authorName: data.authorName,
           datePublished: data.datePublished,
           readTime: data.readTime,
