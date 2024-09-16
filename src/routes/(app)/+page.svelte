@@ -9,6 +9,10 @@
 
 <svelte:head>
   <title>ikniz Blog</title>
+  <meta
+    name="description"
+    content="This is a Blog Site of a CS student from Viet Nam. I share my thoughts, choices on tech trends and tools here."
+  />
 </svelte:head>
 
 <main>
