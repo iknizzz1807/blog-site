@@ -6,6 +6,11 @@
   let isSubmitting = false;
 </script>
 
+<svelte:head>
+  <title>Contact</title>
+  <meta name="description" content="Contact me using these infomation." />
+</svelte:head>
+
 <main>
   <div class="max-w-2xl mx-auto my-8 mt-8">
     <fieldset class="p-8 shadow-lg rounded-lg">

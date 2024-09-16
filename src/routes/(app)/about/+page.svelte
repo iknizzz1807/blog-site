@@ -1,6 +1,14 @@
 <script lang="ts">
 </script>
 
+<svelte:head>
+  <title>About me</title>
+  <meta
+    name="description"
+    content="About me. I am Nguyen My Thong, a CS student from Viet Nam."
+  />
+</svelte:head>
+
 <main class="w-4/5 mx-auto my-5">
   <div class="article flex flex-col mb-8 pb-5 border-b border-gray-300">
     <h1 class="text-3xl font-bold text-gray-800 mb-4">About Me</h1>
