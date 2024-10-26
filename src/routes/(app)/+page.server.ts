@@ -3,6 +3,8 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "$lib/firebase";
 import type { DocumentData } from "firebase/firestore";
 
+export const prerender = true;
+
 interface BlogData extends DocumentData {
   id: String;
   title: string;
