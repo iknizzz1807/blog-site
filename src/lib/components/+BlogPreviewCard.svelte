@@ -1,20 +1,33 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
 
-  export let id: string;
-  export let title: string;
-  export let previewText: string;
-  export let authorImage: string;
-  export let thumbnailImage: string;
-  export let authorName: string;
-  export let datePublished: string;
-  export let readTime: string;
+  interface Props {
+    id: string;
+    title: string;
+    previewText: string;
+    authorImage: string;
+    thumbnailImage: string;
+    authorName: string;
+    datePublished: string;
+    readTime: string;
+  }
+
+  let {
+    id,
+    title,
+    previewText,
+    authorImage,
+    thumbnailImage,
+    authorName,
+    datePublished,
+    readTime
+  }: Props = $props();
 </script>
 
 <main>
   <button
     class="article flex justify-between mb-8 pb-5 border-b border-gray-300 w-full text-left"
-    on:click={() => goto(`/blog/${id}`)}
+    onclick={() => goto(`/blog/${id}`)}
   >
     <div class="content flex-1 mr-5">
       <h2 class="text-2xl font-bold text-gray-800 mb-1">

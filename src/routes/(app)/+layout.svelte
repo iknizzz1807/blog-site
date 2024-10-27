@@ -1,11 +1,13 @@
 <script>
   import "../../app.css";
   import NavBar from "$lib/components/+NavBar.svelte";
+  /** @type {{children?: import('svelte').Snippet}} */
+  let { children } = $props();
 </script>
 
 <main>
   <NavBar />
-  <slot />
+  {@render children?.()}
 </main>
 
 <style>

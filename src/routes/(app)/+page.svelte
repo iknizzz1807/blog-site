@@ -2,7 +2,11 @@
   import type { PageData } from "./$types";
   import BlogPreviewCard from "$lib/components/+BlogPreviewCard.svelte";
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
 
   const { blogs } = data;
 </script>

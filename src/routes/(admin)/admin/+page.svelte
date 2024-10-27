@@ -4,7 +4,7 @@
   import { onMount } from "svelte";
   import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-  let isAdminUser = false;
+  let isAdminUser = $state(false);
 
   onMount(() => {
     const auth = getAuth();

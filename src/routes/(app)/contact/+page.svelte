@@ -1,9 +1,10 @@
 <script>
   import { enhance } from "$app/forms";
 
-  export let form;
+  /** @type {{form: any}} */
+  let { form } = $props();
 
-  let isSubmitting = false;
+  let isSubmitting = $state(false);
 </script>
 
 <svelte:head>

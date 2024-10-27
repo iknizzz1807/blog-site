@@ -10,8 +10,8 @@
   ];
 
   let prevScrollPos = 0;
-  let visible = true;
-  let isOpen = false;
+  let visible = $state(true);
+  let isOpen = $state(false);
 
   onMount(() => {
     window.addEventListener("scroll", handleScroll);
@@ -44,14 +44,14 @@
       <ul class="menu menu-horizontal px-1 hidden md:flex">
         {#each menuItems as item}
           <li>
-            <button on:click={() => goto(`${item.href}`)}>{item.name}</button>
+            <button onclick={() => goto(`${item.href}`)}>{item.name}</button>
           </li>
         {/each}
       </ul>
     </div>
 
     <div class="navbar-end md:flex-1 flex justify-end">
-      <button on:click={toggleMenu} class="btn btn-ghost md:hidden">
+      <button onclick={toggleMenu} class="btn btn-ghost md:hidden">
         <svg
           class="w-6 h-6"
           fill="none"
@@ -78,7 +78,7 @@
         {#each menuItems as item}
           <li>
             <button
-              on:click={() => {
+              onclick={() => {
                 goto(`${item.href}`);
                 isOpen = false;
               }}>{item.name}</button

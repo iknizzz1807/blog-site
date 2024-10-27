@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { preventDefault } from 'svelte/legacy';
+
   import { getFirestore, collection, addDoc } from "firebase/firestore";
   import { app } from "$lib/firebase";
   import { redirect } from "@sveltejs/kit";
@@ -6,14 +8,14 @@
 
   const db = getFirestore(app);
 
-  let title = "";
-  let previewText = "";
-  let content = "";
-  let thumbnailImageUrl = "";
-  let authorImageUrl = "https://i.imgur.com/63oj53J.jpeg";
-  let datePublished = "";
-  let readTime = "";
-  let authorName = "";
+  let title = $state("");
+  let previewText = $state("");
+  let content = $state("");
+  let thumbnailImageUrl = $state("");
+  let authorImageUrl = $state("https://i.imgur.com/63oj53J.jpeg");
+  let datePublished = $state("");
+  let readTime = $state("");
+  let authorName = $state("");
 
   async function handleSubmit() {
     try {
@@ -45,7 +47,7 @@
       class="max-w-3xl w-full mx-auto p-6 bg-card text-card-foreground rounded-lg shadow-md"
     >
       <h2 class="text-2xl font-bold mb-4">Create a New Post</h2>
-      <form on:submit|preventDefault={handleSubmit} class="space-y-4">
+      <form onsubmit={preventDefault(handleSubmit)} class="space-y-4">
         <div>
           <label
             for="title"

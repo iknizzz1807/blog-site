@@ -1,10 +1,12 @@
 <script lang="ts">
+  import { preventDefault } from 'svelte/legacy';
+
   import { auth } from "$lib/firebase.js";
   import { signInWithEmailAndPassword } from "firebase/auth";
 
-  let email = "";
-  let password = "";
-  let error = "";
+  let email = $state("");
+  let password = $state("");
+  let error = $state("");
 
   async function handleSubmit() {
     error = "";
@@ -23,7 +25,7 @@
 <main class="flex justify-center items-center h-screen">
   <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
     <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
-    <form class="space-y-4" on:submit|preventDefault={handleSubmit}>
+    <form class="space-y-4" onsubmit={preventDefault(handleSubmit)}>
       {#if error}
         <div class="alert alert-error">{error}</div>
       {/if}
