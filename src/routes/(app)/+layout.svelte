@@ -1,13 +1,58 @@
-<script>
+<script lang="ts">
   import "../../app.css";
   import NavBar from "$lib/components/+NavBar.svelte";
+  import ProgressBar from "$lib/components/+ProgressBar.svelte";
+  import { beforeNavigate, afterNavigate } from "$app/navigation";
+  import { onMount, onDestroy } from "svelte";
+
   /** @type {{children?: import('svelte').Snippet}} */
   let { children } = $props();
+
+  let progress: number = $state(0);
+  let isNavigating: boolean = $state(false);
+  let interval: any;
+
+  const startProgress = () => {
+    progress = 0;
+    isNavigating = true;
+
+    interval = setInterval(() => {
+      if (progress < 90) {
+        progress += 10;
+      }
+    }, 200);
+  };
+
+  const stopProgress = () => {
+    clearInterval(interval);
+    progress = 100;
+    setTimeout(() => {
+      isNavigating = false;
+      progress = 0;
+    }, 200);
+  };
+
+  beforeNavigate(() => {
+    if (interval) clearInterval(interval);
+    startProgress();
+  });
+
+  afterNavigate(() => {
+    stopProgress();
+  });
+
+  onDestroy(() => {
+    if (interval) clearInterval(interval);
+  });
+
 </script>
 
 <main>
   <NavBar />
   {@render children?.()}
+  {#if isNavigating}
+    <ProgressBar progress={progress} />
+  {/if}
 </main>
 
 <style>
