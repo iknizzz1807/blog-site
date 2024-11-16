@@ -1,9 +1,8 @@
 <script lang="ts">
-  import { preventDefault } from 'svelte/legacy';
+  import { preventDefault } from "svelte/legacy";
 
   import { getFirestore, collection, addDoc } from "firebase/firestore";
   import { app } from "$lib/firebase";
-  import { redirect } from "@sveltejs/kit";
   import { goto } from "$app/navigation";
 
   const db = getFirestore(app);
