@@ -176,6 +176,7 @@
           <button
             type="submit"
             class="bg-primary text-primary-foreground hover:bg-primary/80 px-4 py-2 rounded-md"
+            style="color: white"
           >
             Create Post
           </button>

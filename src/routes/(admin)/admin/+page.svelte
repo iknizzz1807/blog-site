@@ -5,6 +5,7 @@
   import { getAuth, onAuthStateChanged } from "firebase/auth";
 
   let isAdminUser = $state(false);
+  let isLoading = $state(true);
 
   onMount(() => {
     const auth = getAuth();
@@ -14,12 +15,23 @@
       } else {
         isAdminUser = false;
       }
+      isLoading = false;
     });
   });
 </script>
 
+<svelte:head>
+  <title>Admin dashboard</title>
+</svelte:head>
+
 <div class="w-4/5 mx-auto">
-  {#if isAdminUser}
+  {#if isLoading}
+    <p
+      style="display: flex; justify-content: center; align-items: center; height: 100vh; font-size: 40px"
+    >
+      <strong>Loading...</strong>
+    </p>
+  {:else if isAdminUser}
     <CreatePostForm />
   {:else}
     <LoginForm />
